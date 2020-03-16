@@ -1,8 +1,9 @@
 'use strict';
 
-const players = require('./players');
-const player = require('./player');
+const data = require('../../data');
 
 module.exports = {
-    players, player
+    getPlayers: () => data,
+    getPlayer: (parent, args) => data.find(item => item.id === args.id),
+    getPlayersByPosition: (parent, args) => data.filter(item => item.position === args.position)
 };

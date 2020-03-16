@@ -13,8 +13,9 @@ const typeDefs = gql`
         nationality: String
     }
     type Query {
-        players: [Player]!
-        player(id: ID!): Player
+        getPlayers: [Player]!
+        getPlayer(id: ID!): Player
+        getPlayersByPosition(position: String!): [Player]!
     }
     type Mutation {
         newPlayer (firstName: String! lastName: String! position: String!): Player!

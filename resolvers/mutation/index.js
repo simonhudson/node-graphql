@@ -1,12 +1,8 @@
 'use strict';
 
-const newPlayer = require('./newPlayer');
-const updatePlayer = require('./updatePlayer');
-const deletePlayer = require('./deletePlayer');
-const players = require('../query').players();
+const players = require('../query').getPlayers();
 
 module.exports = {
-    // newPlayer, updatePlayer, deletePlayer
     newPlayer: (parent, args) => {
         const player = {
             id: String(players.length + 1),
