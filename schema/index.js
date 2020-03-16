@@ -16,6 +16,11 @@ const typeDefs = gql`
         players: [Player]!
         player(number: Int!): Player
     }
+    type Mutation {
+        newPlayer (firstName: String! lastName: String! position: String!): Player!
+        updatePlayer(id: ID! firstName: String!): Player!
+        deletePlayer(id: ID!): Player!
+    }
 `;
 
 module.exports = typeDefs;
