@@ -4,15 +4,17 @@ const { gql } = require('apollo-server');
 
 // Use ! to make field required
 const typeDefs = gql`
-    type Highlight {
+    type Player {
         id: ID!
-        content: String!
-        title: String
-        author: String
+        number: Int!
+        firstName: String
+        lastName: String
+        position: String
+        nationality: String
     }
     type Query {
-        highlights: [Highlight]!
-        highlight(id: ID!): Highlight
+        players: [Player]!
+        player(number: Int!): Player
     }
 `;
 
