@@ -14,7 +14,7 @@ const typeDefs = gql`
     }
     type Query {
         players: [Player]!
-        player(number: Int!): Player
+        player(id: ID!): Player
     }
     type Mutation {
         newPlayer (firstName: String! lastName: String! position: String!): Player!
