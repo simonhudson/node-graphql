@@ -6,7 +6,7 @@ const { gql } = require('apollo-server');
 const typeDefs = gql`
     type Player {
         id: ID!
-        number: Int!
+        squadNumber: Int!
         firstName: String
         lastName: String
         position: String
@@ -14,12 +14,12 @@ const typeDefs = gql`
     }
     type Query {
         getPlayers: [Player]!
-        getPlayer(id: ID!): Player
+        getPlayer(squadNumber: Int!): Player
         getPlayersByPosition(position: String!): [Player]!
     }
     type Mutation {
-        newPlayer (firstName: String! lastName: String! position: String!): Player!
-        updatePlayer(id: ID! firstName: String!): Player!
+        newPlayer (firstName: String! lastName: String! position: String! squadNumber: Int!): Player!
+        updatePlayer(firstName: String lastName: String position: String squadNumber: Int): Player!
         deletePlayer(id: ID!): Player!
     }
 `;

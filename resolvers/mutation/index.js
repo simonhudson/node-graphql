@@ -1,26 +1,28 @@
 'use strict';
 
 const players = require('../query').getPlayers();
+const uuidv4 = require('uuid').v4;
 
 module.exports = {
     newPlayer: (parent, args) => {
         const player = {
-            id: String(players.length + 1),
+            id: uuidv4(),
             firstName: args.firstName,
             lastName: args.lastName,
-            position: args.position
+            position: args.position,
+            squadNumber: args.squadNumber
         };
         players.push(player);
         return player;
     },
     updatePlayer: (parent, args) => {
-        const index = players.findIndex(player => player.id === args.id);
+        const index = players.findIndex(player => player.squadNumber === args.squadNumber);
         const player = {
-            id: args.id,
-            firstName: args.firstName,
-            firstName: args.firstName,
-            lastName: players[index].lastName,
-            position: players[index].position
+            id: players[index].id,
+            firstName: args.firstName || players[index].firstName,
+            lastName: args.lastName || players[index].lastName,
+            position: args.position || players[index].position,
+            squadNumber: args.squadNumber || players[index].squadNumber
         };
         players[index] = player;
         return player;
